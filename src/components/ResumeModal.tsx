@@ -56,25 +56,33 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({
           </div>
 
           <div className="flex items-center gap-2">
-            <button
-              onClick={handleDownload}
-              className="bg-[#B99AFF] hover:bg-[#d4bbff] text-[#090711] px-4 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5 shadow-md transition-all"
+            <a
+              id="modal-download-pdf-btn"
+              href="/assets/resume.pdf"
+              download="Harini_P_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#B99AFF] hover:bg-[#d4bbff] text-[#090711] px-4 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5 shadow-md transition-all cursor-pointer"
               title="Download PDF File"
             >
               <i className="fas fa-download"></i>
               <span>Download PDF</span>
-            </button>
+            </a>
 
-            <button
-              onClick={handleOpenPdf}
-              className="bg-white/10 hover:bg-white/20 text-white px-3.5 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5 border border-white/15 transition-all"
+            <a
+              id="modal-open-pdf-btn"
+              href="/assets/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white/10 hover:bg-white/20 text-white px-3.5 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5 border border-white/15 transition-all cursor-pointer"
               title="Open Raw PDF in New Tab"
             >
               <i className="fas fa-external-link-alt"></i>
               <span className="hidden sm:inline">Open PDF</span>
-            </button>
+            </a>
 
             <button
+              id="modal-print-btn"
               onClick={handlePrint}
               className="bg-white/10 hover:bg-white/20 text-white px-3.5 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5 border border-white/15 transition-all"
               title="Print Resume"
