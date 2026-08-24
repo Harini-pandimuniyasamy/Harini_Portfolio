@@ -75,7 +75,7 @@ export async function askHariniAI(
   try {
     const contents: any[] = [];
     if (history && history.length > 0) {
-      const recent = history.slice(-4);
+      const recent = history.slice(-3);
       for (const h of recent) {
         contents.push({
           role: h.role === "user" ? "user" : "model",
@@ -89,12 +89,12 @@ export async function askHariniAI(
     });
 
     const response = await ai.models.generateContent({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.5-flash-lite",
       contents: contents,
       config: {
         systemInstruction: COMPACT_SYSTEM_INSTRUCTION,
-        temperature: 0.2,
-        maxOutputTokens: 350,
+        temperature: 0.1,
+        maxOutputTokens: 250,
       },
     });
 
@@ -126,7 +126,7 @@ export async function* streamHariniAI(
     const words = fallback.split(" ");
     for (let i = 0; i < words.length; i++) {
       yield (i === 0 ? "" : " ") + words[i];
-      await new Promise((r) => setTimeout(r, 18));
+      await new Promise((r) => setTimeout(r, 12));
     }
     return;
   }
@@ -134,7 +134,7 @@ export async function* streamHariniAI(
   try {
     const contents: any[] = [];
     if (history && history.length > 0) {
-      const recent = history.slice(-4);
+      const recent = history.slice(-3);
       for (const h of recent) {
         contents.push({
           role: h.role === "user" ? "user" : "model",
@@ -148,12 +148,12 @@ export async function* streamHariniAI(
     });
 
     const responseStream = await ai.models.generateContentStream({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.5-flash-lite",
       contents: contents,
       config: {
         systemInstruction: COMPACT_SYSTEM_INSTRUCTION,
-        temperature: 0.2,
-        maxOutputTokens: 350,
+        temperature: 0.1,
+        maxOutputTokens: 250,
       },
     });
 

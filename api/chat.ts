@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { askHariniAI } from "../server/geminiService";
+import { askHariniAI, streamHariniAI } from "../server/geminiService";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   // Set CORS headers
@@ -29,10 +29,24 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       }
     }
 
-    const { message, history } = body || {};
+    const { message, history, stream } = body || {};
 
     if (!message || typeof message !== "string" || !message.trim()) {
       return res.status(400).json({ error: "Message string is required." });
+    }
+
+    // Support instant Server-Sent Events (SSE) streaming for real-time tokens
+    if (stream === true) {
+      res.setHeader("Content-Type", "text/event-stream; charset=utf-8");
+      res.setHeader("Cache-Control", "no-cache, no-transform");
+      res.setHeader("Connection", "keep-alive");
+      res.setHeader("X-Accel-Buffering", "no");
+
+      for await (const token of streamHariniAI(message, Array.isArray(history) ? history : [])) {
+        res.write(`data: ${JSON.stringify({ token })}\n\n`);
+      }
+      res.write(`data: [DONE]\n\n`);
+      return res.end();
     }
 
     const reply = await askHariniAI(message, Array.isArray(history) ? history : []);
