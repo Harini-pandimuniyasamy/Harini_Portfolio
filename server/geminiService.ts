@@ -4,7 +4,7 @@ import { getFallbackAnswer } from "./knowledgeBase";
 let aiClient: GoogleGenAI | null = null;
 
 function getAiClient(): GoogleGenAI | null {
-  const apiKey = process.env.GEMINI_API_KEY;
+  const apiKey = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY;
   if (!apiKey || apiKey === "MY_GEMINI_API_KEY" || apiKey.trim() === "") {
     return null;
   }
@@ -89,7 +89,7 @@ export async function askHariniAI(
     });
 
     const response = await ai.models.generateContent({
-      model: "gemini-2.5-flash",
+      model: "gemini-3.7-flash",
       contents: contents,
       config: {
         systemInstruction: COMPACT_SYSTEM_INSTRUCTION,
@@ -148,7 +148,7 @@ export async function* streamHariniAI(
     });
 
     const responseStream = await ai.models.generateContentStream({
-      model: "gemini-2.5-flash",
+      model: "gemini-3.7-flash",
       contents: contents,
       config: {
         systemInstruction: COMPACT_SYSTEM_INSTRUCTION,

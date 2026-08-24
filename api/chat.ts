@@ -20,7 +20,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    const { message, history } = req.body || {};
+    let body = req.body;
+    if (typeof body === "string") {
+      try {
+        body = JSON.parse(body);
+      } catch (e) {
+        // ignore JSON parse error, proceed with raw body
+      }
+    }
+
+    const { message, history } = body || {};
 
     if (!message || typeof message !== "string" || !message.trim()) {
       return res.status(400).json({ error: "Message string is required." });
@@ -30,8 +39,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(200).json({ reply });
   } catch (error: any) {
     console.error("Vercel Serverless Function /api/chat error:", error);
-    return res.status(500).json({
-      error: "Internal server error occurred while processing chatbot response.",
+    return res.status(200).json({
+      reply: "Hi! I am Harini's portfolio assistant. Harini is a Full-Stack Web Developer and UI/UX Designer currently pursuing her MCA with a 9.33 CGPA. Feel free to ask about her projects like Citizen Connect or her technical skills!",
     });
   }
 }
