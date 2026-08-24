@@ -176,6 +176,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
               <img
                 src={PERSONAL_INFO.profileImage}
                 alt="Professional portrait of Harini P"
+                referrerPolicy="no-referrer"
                 className="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 filter brightness-105"
                 loading="eager"
               />

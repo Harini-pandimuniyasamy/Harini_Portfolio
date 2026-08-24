@@ -1,4 +1,5 @@
 import { Project, SkillItem, EducationItem, InternshipItem, AchievementItem } from "../types";
+import farmersMarketImg from "../assets/images/farmers_market_1787584276643.jpg";
 
 export const PERSONAL_INFO = {
   name: "HARINI P",
@@ -242,7 +243,7 @@ export const PROJECTS_LIST: Project[] = [
     badge: "Major Project",
     tagline: "Empowering Rural Farmers with Direct Consumer Market Linkages",
     description: "A comprehensive platform designed to empower farmers by connecting them directly with consumers and markets. This solution eliminates intermediaries, ensuring better profit margins for farmers while providing consumers with fresh produce. Built with user-centric design principles to accommodate varying levels of digital literacy among users in rural areas.",
-    image: "/assets/direct_market_farmers.jpg",
+    image: farmersMarketImg,
     tags: ["Web Platform", "Developer", "PHP/MYSQL", "Rural UX"],
     technologies: ["PHP", "MySQL", "JavaScript", "HTML5", "CSS3", "UI/UX Design"],
     problem: "Agricultural producers often rely on long chains of middlemen and brokers who take substantial cuts, resulting in low farmer realization prices despite high retail consumer costs.",
