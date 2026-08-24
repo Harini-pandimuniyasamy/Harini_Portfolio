@@ -2,9 +2,9 @@ import express, { Request, Response } from "express";
 import path from "path";
 import dotenv from "dotenv";
 import { createServer as createViteServer } from "vite";
-import { generateResumePdf } from "./server/generateResume";
-import { askHariniAI } from "./server/geminiService";
-import { HARINI_DATA } from "./server/knowledgeBase";
+import { generateResumePdf } from "./server/generateResume.js";
+import { askHariniAI } from "./server/geminiService.js";
+import { HARINI_DATA } from "./server/knowledgeBase.js";
 
 dotenv.config();
 

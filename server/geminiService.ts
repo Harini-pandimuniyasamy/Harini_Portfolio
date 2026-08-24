@@ -1,5 +1,5 @@
 import { GoogleGenAI } from "@google/genai";
-import { getFallbackAnswer } from "./knowledgeBase";
+import { getFallbackAnswer } from "./knowledgeBase.js";
 
 let aiClient: GoogleGenAI | null = null;
 

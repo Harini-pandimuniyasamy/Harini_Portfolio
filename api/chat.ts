@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { askHariniAI, streamHariniAI } from "../server/geminiService";
+import { askHariniAI, streamHariniAI } from "../server/geminiService.js";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   // Set CORS headers
