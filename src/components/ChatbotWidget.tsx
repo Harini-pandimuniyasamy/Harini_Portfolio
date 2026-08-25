@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { ChatMessage } from "../types";
+import { getInstantAnswer } from "../utils/instantAnswers";
 
 interface ChatbotWidgetProps {
   onOpenResume: () => void;
@@ -25,7 +26,7 @@ export const ChatbotWidget: React.FC<ChatbotWidgetProps> = ({ onOpenResume }) =>
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
-  // Exact suggested questions as requested
+  // Exact suggested questions
   const suggestedQuestions = [
     "Who is Harini?",
     "What are her skills?",
@@ -72,30 +73,46 @@ export const ChatbotWidget: React.FC<ChatbotWidgetProps> = ({ onOpenResume }) =>
     setLoading(true);
     setIsTypingInitial(true);
 
-    // Quick client-side intercept for direct resume request
-    const lower = text.toLowerCase();
-    if (lower === "resume" || lower === "download resume" || lower === "view resume") {
-      setTimeout(() => {
-        const aiMsg: ChatMessage = {
-          id: `ai-${Date.now()}`,
+    // Fast Path 1: Check instant local knowledge base for verified 100% immediate answer
+    const instant = getInstantAnswer(text);
+    if (instant) {
+      setIsTypingInitial(false);
+      const aiMsgId = `ai-${Date.now()}`;
+      const words = instant.split(" ");
+      let accumulated = "";
+
+      // Initialize message container
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: aiMsgId,
           sender: "assistant",
-          text: "Harini's ATS-friendly one-page A4 resume is ready to view and download. Click the button below to open it!",
+          text: "",
           timestamp: new Date().toLocaleTimeString([], {
             hour: "2-digit",
             minute: "2-digit",
           }),
-        };
-        setMessages((prev) => [...prev, aiMsg]);
-        setIsTypingInitial(false);
-        setLoading(false);
-      }, 200);
+        },
+      ]);
+
+      // Ultra-rapid word stream (6ms per token) for fluid instant typing
+      for (let i = 0; i < words.length; i++) {
+        accumulated += (i === 0 ? "" : " ") + words[i];
+        const currentText = accumulated;
+        setMessages((prev) =>
+          prev.map((m) => (m.id === aiMsgId ? { ...m, text: currentText } : m))
+        );
+        await new Promise((r) => setTimeout(r, 6));
+      }
+
+      setLoading(false);
       return;
     }
 
     try {
       const history = messages
         .filter((m) => m.id !== "welcome" && !m.id.startsWith("ai-err"))
-        .slice(-4)
+        .slice(-3)
         .map((m) => ({
           role: m.sender === "user" ? ("user" as const) : ("model" as const),
           text: m.text,
@@ -202,12 +219,16 @@ export const ChatbotWidget: React.FC<ChatbotWidgetProps> = ({ onOpenResume }) =>
       console.error("Chatbot error:", err);
       setIsTypingInitial(false);
       setLoading(false);
-      setErrorState("Sorry, I'm having trouble responding right now. Please try again.");
+
+      // Even on network disconnect, provide accurate fallback answer
+      const fallbackText =
+        getInstantAnswer(text) ||
+        "Harini P is a Full-Stack Developer and UI/UX Designer (MCA with 9.33 CGPA). Feel free to ask about Citizen Connect, her skills, or contact details!";
 
       const fallbackMsg: ChatMessage = {
         id: `ai-err-${Date.now()}`,
         sender: "assistant",
-        text: "Sorry, I'm having trouble responding right now. Please try again.",
+        text: fallbackText,
         timestamp: new Date().toLocaleTimeString([], {
           hour: "2-digit",
           minute: "2-digit",
@@ -216,6 +237,7 @@ export const ChatbotWidget: React.FC<ChatbotWidgetProps> = ({ onOpenResume }) =>
       setMessages((prev) => [...prev, fallbackMsg]);
     }
   };
+
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && !e.shiftKey) {
