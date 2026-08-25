@@ -13,7 +13,7 @@
         },
         {
           "key": "Cache-Control",
-          "value": "public, max-age=3600"
+          "value": "public, max-age=86400, must-revalidate"
         }
       ]
     },
@@ -30,12 +30,20 @@
         },
         {
           "key": "Cache-Control",
-          "value": "public, max-age=3600"
+          "value": "public, max-age=86400, must-revalidate"
         }
       ]
     }
   ],
   "rewrites": [
+    {
+      "source": "/assets/resume.pdf",
+      "destination": "/api/resume"
+    },
+    {
+      "source": "/resume.pdf",
+      "destination": "/api/resume"
+    },
     {
       "source": "/api/(.*)",
       "destination": "/api/$1"
@@ -45,13 +53,8 @@
       "destination": "/assets/$1"
     },
     {
-      "source": "/resume.pdf",
-      "destination": "/resume.pdf"
-    },
-    {
-      "source": "/((?!api/|assets/|.*\\..*).*)",
+      "source": "/((?!api/|assets/|resume.pdf|.*\\..*).*)",
       "destination": "/index.html"
     }
   ]
 }
-
