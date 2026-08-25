@@ -67,12 +67,33 @@ export default function App() {
       const next = !prev;
       if (next) {
         document.documentElement.classList.remove("light");
+        document.documentElement.classList.add("dark");
+        document.body.classList.remove("light");
+        document.body.classList.add("dark");
       } else {
+        document.documentElement.classList.remove("dark");
         document.documentElement.classList.add("light");
+        document.body.classList.remove("dark");
+        document.body.classList.add("light");
       }
       return next;
     });
   };
+
+  // Sync initial theme
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.remove("light");
+      document.documentElement.classList.add("dark");
+      document.body.classList.remove("light");
+      document.body.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      document.documentElement.classList.add("light");
+      document.body.classList.remove("dark");
+      document.body.classList.add("light");
+    }
+  }, [isDarkMode]);
 
   // Keyboard shortcut listener (Esc to close modals)
   useEffect(() => {
@@ -86,12 +107,12 @@ export default function App() {
   }, []);
 
   return (
-    <div className={`min-h-screen flex flex-col items-center relative ${isDarkMode ? "" : "light"}`}>
+    <div className={`min-h-screen flex flex-col items-center relative w-full ${isDarkMode ? "" : "light"}`}>
       {/* Scroll Progress Bar */}
       <ScrollProgressBar />
 
       {/* Dynamic Background Aura */}
-      <BackgroundAura />
+      <BackgroundAura isDarkMode={isDarkMode} />
 
       {/* Sticky Glassmorphic Navbar */}
       <Navbar

@@ -1,6 +1,10 @@
 import React, { useEffect, useRef } from "react";
+ 
+interface BackgroundAuraProps {
+  isDarkMode?: boolean;
+}
 
-export const BackgroundAura: React.FC = () => {
+export const BackgroundAura: React.FC<BackgroundAuraProps> = ({ isDarkMode = true }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
@@ -35,7 +39,9 @@ export const BackgroundAura: React.FC = () => {
 
     const particles: Particle[] = [];
     const count = Math.min(Math.floor(window.innerWidth / 35), 40);
-    const colors = ["#B99AFF", "#d4bbff", "#7C4DFF", "#9d71fa"];
+    const colors = isDarkMode
+      ? ["#B99AFF", "#d4bbff", "#7C4DFF", "#9d71fa"]
+      : ["#703bf7", "#9d72ff", "#8a64f5", "#5925dc"];
 
     for (let i = 0; i < count; i++) {
       particles.push({
@@ -44,7 +50,7 @@ export const BackgroundAura: React.FC = () => {
         vx: (Math.random() - 0.5) * 0.4,
         vy: (Math.random() - 0.5) * 0.4,
         radius: Math.random() * 2 + 0.8,
-        alpha: Math.random() * 0.35 + 0.1,
+        alpha: isDarkMode ? Math.random() * 0.35 + 0.1 : Math.random() * 0.25 + 0.08,
         color: colors[Math.floor(Math.random() * colors.length)],
       });
     }
@@ -52,7 +58,7 @@ export const BackgroundAura: React.FC = () => {
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
-      // Draw subtle ambient glow gradients
+      // Draw ambient glow gradients
       const grad1 = ctx.createRadialGradient(
         width * 0.2,
         height * 0.25,
@@ -61,8 +67,13 @@ export const BackgroundAura: React.FC = () => {
         height * 0.25,
         width * 0.45
       );
-      grad1.addColorStop(0, "rgba(185, 154, 255, 0.06)");
-      grad1.addColorStop(1, "rgba(20, 17, 34, 0)");
+      if (isDarkMode) {
+        grad1.addColorStop(0, "rgba(185, 154, 255, 0.06)");
+        grad1.addColorStop(1, "rgba(20, 17, 34, 0)");
+      } else {
+        grad1.addColorStop(0, "rgba(112, 59, 247, 0.07)");
+        grad1.addColorStop(1, "rgba(248, 247, 255, 0)");
+      }
       ctx.fillStyle = grad1;
       ctx.fillRect(0, 0, width, height);
 
@@ -74,8 +85,13 @@ export const BackgroundAura: React.FC = () => {
         height * 0.75,
         width * 0.5
       );
-      grad2.addColorStop(0, "rgba(124, 77, 255, 0.05)");
-      grad2.addColorStop(1, "rgba(20, 17, 34, 0)");
+      if (isDarkMode) {
+        grad2.addColorStop(0, "rgba(124, 77, 255, 0.05)");
+        grad2.addColorStop(1, "rgba(20, 17, 34, 0)");
+      } else {
+        grad2.addColorStop(0, "rgba(96, 50, 216, 0.06)");
+        grad2.addColorStop(1, "rgba(248, 247, 255, 0)");
+      }
       ctx.fillStyle = grad2;
       ctx.fillRect(0, 0, width, height);
 
@@ -106,13 +122,14 @@ export const BackgroundAura: React.FC = () => {
       window.removeEventListener("resize", handleResize);
       cancelAnimationFrame(animationFrameId);
     };
-  }, []);
+  }, [isDarkMode]);
 
   return (
     <canvas
       id="bg-canvas"
       ref={canvasRef}
-      className="fixed inset-0 w-full h-full pointer-events-none z-[-1] opacity-70"
+      className={`fixed inset-0 w-full h-full pointer-events-none z-[-1] ${isDarkMode ? "opacity-70" : "opacity-60"}`}
     />
   );
 };
+

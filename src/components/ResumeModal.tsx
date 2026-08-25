@@ -1,5 +1,6 @@
 import React from "react";
 import { PERSONAL_INFO, EDUCATION_LIST, PROJECTS_LIST, SKILLS_LIST, INTERNSHIPS_LIST, ACHIEVEMENTS_LIST, CERTIFICATIONS_LIST } from "../data/portfolioData";
+import { downloadResumePdf } from "../utils/downloadResume";
 
 interface ResumeModalProps {
   isOpen: boolean;
@@ -13,16 +14,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({
   if (!isOpen) return null;
 
   const handleDownload = () => {
-    const link = document.createElement("a");
-    link.href = "/assets/resume.pdf";
-    link.download = "Harini_P_Resume.pdf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
-  const handleOpenPdf = () => {
-    window.open("/assets/resume.pdf", "_blank");
+    downloadResumePdf("Harini_P_Resume.pdf");
   };
 
   const handlePrint = () => {
@@ -56,35 +48,20 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({
           </div>
 
           <div className="flex items-center gap-2">
-            <a
+            <button
               id="modal-download-pdf-btn"
-              href="/assets/resume.pdf"
-              download="Harini_P_Resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
+              onClick={handleDownload}
               className="bg-[#B99AFF] hover:bg-[#d4bbff] text-[#090711] px-4 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5 shadow-md transition-all cursor-pointer"
-              title="Download PDF File"
+              title="Download 1-Page PDF Resume"
             >
               <i className="fas fa-download"></i>
               <span>Download PDF</span>
-            </a>
-
-            <a
-              id="modal-open-pdf-btn"
-              href="/assets/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-white/10 hover:bg-white/20 text-white px-3.5 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5 border border-white/15 transition-all cursor-pointer"
-              title="Open Raw PDF in New Tab"
-            >
-              <i className="fas fa-external-link-alt"></i>
-              <span className="hidden sm:inline">Open PDF</span>
-            </a>
+            </button>
 
             <button
               id="modal-print-btn"
               onClick={handlePrint}
-              className="bg-white/10 hover:bg-white/20 text-white px-3.5 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5 border border-white/15 transition-all"
+              className="bg-white/10 hover:bg-white/20 text-white px-3.5 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5 border border-white/15 transition-all cursor-pointer"
               title="Print Resume"
             >
               <i className="fas fa-print"></i>
