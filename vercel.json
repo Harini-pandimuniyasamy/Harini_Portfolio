@@ -1,4 +1,40 @@
 {
+  "headers": [
+    {
+      "source": "/assets/resume.pdf",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/pdf"
+        },
+        {
+          "key": "Content-Disposition",
+          "value": "inline; filename=\"Harini_P_Resume.pdf\""
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
+      ]
+    },
+    {
+      "source": "/resume.pdf",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/pdf"
+        },
+        {
+          "key": "Content-Disposition",
+          "value": "inline; filename=\"Harini_P_Resume.pdf\""
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
+      ]
+    }
+  ],
   "rewrites": [
     {
       "source": "/api/(.*)",
@@ -9,12 +45,13 @@
       "destination": "/assets/$1"
     },
     {
-      "source": "/(.*\\..*)",
-      "destination": "/$1"
+      "source": "/resume.pdf",
+      "destination": "/resume.pdf"
     },
     {
-      "source": "/(.*)",
+      "source": "/((?!api/|assets/|.*\\..*).*)",
       "destination": "/index.html"
     }
   ]
 }
+
