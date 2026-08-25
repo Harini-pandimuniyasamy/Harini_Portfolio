@@ -445,21 +445,38 @@
   color: #8880a4 !important;
 }
 
-/* Modals (Project, Skill, Resume) */
+/* Modals (Project & Skill Details) */
 .light #project-detail-modal .glass-panel,
-.light #skill-detail-modal .glass-panel,
-.light #resume-modal .glass-panel {
+.light #skill-detail-modal .glass-panel {
   background: rgba(255, 255, 255, 0.98) !important;
   border-color: rgba(112, 59, 247, 0.35) !important;
 }
 
-.light #resume-modal .bg-\[\#090711\]\/90,
-.light #resume-modal .bg-\[\#090711\] {
-  background-color: #f2eefd !important;
+/* Resume Modal - Always Pure Full-View White Document Presentation */
+#resume-modal #resume-a4-sheet {
+  background-color: #ffffff !important;
+  color: #111827 !important;
 }
 
-.light #resume-modal .bg-\[\#120f20\]\/60 {
-  background-color: #eeeafb !important;
+#resume-modal #resume-a4-sheet h1,
+#resume-modal #resume-a4-sheet h2,
+#resume-modal #resume-a4-sheet .text-\[\#4B269C\] {
+  color: #4B269C !important;
+}
+
+#resume-modal #resume-a4-sheet p,
+#resume-modal #resume-a4-sheet span,
+#resume-modal #resume-a4-sheet strong {
+  color: #1f2937 !important;
+}
+
+#resume-modal #resume-a4-sheet strong.text-gray-900,
+#resume-modal #resume-a4-sheet span.font-bold {
+  color: #111827 !important;
+}
+
+#resume-modal #resume-a4-sheet a {
+  color: #4B269C !important;
 }
 
 /* Mobile Drawer Menu */

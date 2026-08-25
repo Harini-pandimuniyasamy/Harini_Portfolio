@@ -24,24 +24,24 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({
   return (
     <div
       id="resume-modal"
-      className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-6 bg-black/85 backdrop-blur-md animate-fadeIn"
+      className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-6 bg-black/75 backdrop-blur-md animate-fadeIn"
       onClick={onClose}
     >
       <div
-        className="glass-panel w-full max-w-4xl max-h-[94vh] flex flex-col rounded-3xl border border-[#B99AFF]/40 shadow-2xl overflow-hidden animate-scaleUp"
+        className="w-full max-w-4xl max-h-[95vh] flex flex-col rounded-2xl md:rounded-3xl bg-white border border-gray-200 shadow-2xl overflow-hidden animate-scaleUp"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Modal Top Control Bar */}
-        <div className="p-4 md:px-6 bg-[#090711]/90 border-b border-white/10 flex flex-wrap items-center justify-between gap-3">
+        {/* Modal Top Control Bar - Clean Full White */}
+        <div className="px-4 sm:px-6 py-3.5 bg-white border-b border-gray-200 flex flex-wrap items-center justify-between gap-3 shrink-0">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-full bg-[#B99AFF] flex items-center justify-center text-[#090711] font-bold text-xs">
+            <div className="w-9 h-9 rounded-xl bg-[#703bf7] flex items-center justify-center text-white font-bold text-sm shadow-sm">
               <i className="fas fa-file-alt"></i>
             </div>
             <div>
-              <h3 className="text-white font-bold text-sm md:text-base">
+              <h3 className="text-gray-900 font-bold text-sm md:text-base leading-tight">
                 Harini P — Curriculum Vitae (ATS-Optimized)
               </h3>
-              <p className="text-[11px] text-gray-400">
+              <p className="text-xs text-gray-500 font-medium">
                 1-Page A4 Standard Format | Holy Cross College (MCA, 9.33 CGPA)
               </p>
             </div>
@@ -51,7 +51,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({
             <button
               id="modal-download-pdf-btn"
               onClick={handleDownload}
-              className="bg-[#B99AFF] hover:bg-[#d4bbff] text-[#090711] px-4 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5 shadow-md transition-all cursor-pointer"
+              className="bg-[#703bf7] hover:bg-[#5925dc] text-white px-4 py-2 rounded-full text-xs font-bold flex items-center gap-1.5 shadow-md hover:shadow-lg transition-all cursor-pointer"
               title="Download 1-Page PDF Resume"
             >
               <i className="fas fa-download"></i>
@@ -61,7 +61,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({
             <button
               id="modal-print-btn"
               onClick={handlePrint}
-              className="bg-white/10 hover:bg-white/20 text-white px-3.5 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5 border border-white/15 transition-all cursor-pointer"
+              className="bg-gray-100 hover:bg-gray-200 text-gray-700 px-3.5 py-2 rounded-full text-xs font-semibold flex items-center gap-1.5 border border-gray-300 transition-all cursor-pointer"
               title="Print Resume"
             >
               <i className="fas fa-print"></i>
@@ -70,7 +70,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({
 
             <button
               onClick={onClose}
-              className="w-8 h-8 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 flex items-center justify-center text-gray-300 hover:text-white transition-colors ml-1"
+              className="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-500 hover:text-gray-900 flex items-center justify-center transition-colors ml-1 cursor-pointer"
               title="Close Modal"
             >
               <i className="fas fa-times text-xs"></i>
@@ -78,13 +78,13 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({
           </div>
         </div>
 
-        {/* Scrollable A4 Document Paper Sheet */}
-        <div className="flex-1 overflow-y-auto p-4 md:p-8 bg-[#120f20]/60 flex justify-center">
-          <div 
-            id="resume-a4-sheet"
-            style={{ fontFamily: "'Times New Roman', Times, serif" }}
-            className="w-full max-w-[820px] bg-white text-[#111827] p-8 sm:p-10 md:p-12 rounded-xl shadow-2xl border border-gray-200 text-left text-sm sm:text-[14.5px] leading-[1.5] selection:bg-purple-200"
-          >
+        {/* Scrollable Full-Page Document Sheet */}
+        <div 
+          id="resume-a4-sheet"
+          style={{ fontFamily: "'Times New Roman', Times, serif" }}
+          className="flex-1 overflow-y-auto bg-white text-[#111827] px-6 sm:px-12 md:px-16 py-6 sm:py-8 text-left text-sm sm:text-[14.5px] leading-[1.5] selection:bg-purple-200"
+        >
+          <div className="w-full max-w-[800px] mx-auto space-y-4">
             {/* Header */}
             <div className="text-center pb-4 border-b-2 border-[#4B269C]">
               <h1 className="text-2xl sm:text-3xl font-bold uppercase tracking-wider text-[#4B269C] mb-1.5 leading-[1.3]">
@@ -130,7 +130,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({
             </div>
 
             {/* Profile Summary */}
-            <div className="mt-4">
+            <div className="pt-2">
               <h2 className="text-sm font-bold uppercase tracking-wider text-[#4B269C] border-b border-gray-300 pb-1 mb-2 flex items-center gap-2 leading-[1.4]">
                 <i className="fas fa-user text-xs"></i> Professional Summary
               </h2>
@@ -140,7 +140,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({
             </div>
 
             {/* Education */}
-            <div className="mt-4">
+            <div className="pt-2">
               <h2 className="text-sm font-bold uppercase tracking-wider text-[#4B269C] border-b border-gray-300 pb-1 mb-2 flex items-center gap-2 leading-[1.4]">
                 <i className="fas fa-graduation-cap text-xs"></i> Education
               </h2>
@@ -160,7 +160,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({
             </div>
 
             {/* Technical Skills */}
-            <div className="mt-4">
+            <div className="pt-2">
               <h2 className="text-sm font-bold uppercase tracking-wider text-[#4B269C] border-b border-gray-300 pb-1 mb-2 flex items-center gap-2 leading-[1.4]">
                 <i className="fas fa-laptop-code text-xs"></i> Technical Skills
               </h2>
@@ -181,7 +181,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({
             </div>
 
             {/* Projects */}
-            <div className="mt-4">
+            <div className="pt-2">
               <h2 className="text-sm font-bold uppercase tracking-wider text-[#4B269C] border-b border-gray-300 pb-1 mb-2 flex items-center gap-2 leading-[1.4]">
                 <i className="fas fa-folder-open text-xs"></i> Key Projects
               </h2>
@@ -208,7 +208,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({
             </div>
 
             {/* Internships */}
-            <div className="mt-4">
+            <div className="pt-2">
               <h2 className="text-sm font-bold uppercase tracking-wider text-[#4B269C] border-b border-gray-300 pb-1 mb-2 flex items-center gap-2 leading-[1.4]">
                 <i className="fas fa-briefcase text-xs"></i> Internships & Practical Experience
               </h2>
@@ -225,7 +225,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({
             </div>
 
             {/* Achievements & Certifications */}
-            <div className="mt-4">
+            <div className="pt-2">
               <h2 className="text-sm font-bold uppercase tracking-wider text-[#4B269C] border-b border-gray-300 pb-1 mb-2 flex items-center gap-2 leading-[1.4]">
                 <i className="fas fa-award text-xs"></i> Achievements & Certifications
               </h2>
@@ -244,12 +244,12 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({
           </div>
         </div>
 
-        {/* Modal Bottom Bar */}
-        <div className="p-4 bg-[#090711] border-t border-white/10 flex items-center justify-between text-xs text-gray-400">
-          <span>Harini P • Trichy, Tamil Nadu</span>
+        {/* Modal Bottom Bar - Clean Full White */}
+        <div className="px-4 sm:px-6 py-3 bg-white border-t border-gray-200 flex items-center justify-between text-xs text-gray-500 shrink-0">
+          <span className="font-medium text-gray-600">Harini P • Trichy, Tamil Nadu</span>
           <button
             onClick={onClose}
-            className="px-5 py-2 rounded-full bg-white/10 text-white hover:bg-white/20 font-semibold"
+            className="px-4 py-1.5 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold transition-colors cursor-pointer"
           >
             Close Viewer
           </button>
@@ -258,3 +258,4 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({
     </div>
   );
 };
+

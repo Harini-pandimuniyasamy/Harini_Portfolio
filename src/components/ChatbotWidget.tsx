@@ -78,10 +78,11 @@ export const ChatbotWidget: React.FC<ChatbotWidgetProps> = ({ onOpenResume }) =>
     if (instant) {
       setIsTypingInitial(false);
       const aiMsgId = `ai-${Date.now()}`;
+      
+      // Instantly add message and fast-type in chunks
       const words = instant.split(" ");
       let accumulated = "";
 
-      // Initialize message container
       setMessages((prev) => [
         ...prev,
         {
@@ -95,14 +96,16 @@ export const ChatbotWidget: React.FC<ChatbotWidgetProps> = ({ onOpenResume }) =>
         },
       ]);
 
-      // Ultra-rapid word stream (6ms per token) for fluid instant typing
-      for (let i = 0; i < words.length; i++) {
-        accumulated += (i === 0 ? "" : " ") + words[i];
+      // Stream in micro-batches (3-4 words per frame) for smooth, instantaneous typing
+      const batchSize = 3;
+      for (let i = 0; i < words.length; i += batchSize) {
+        const chunk = words.slice(i, i + batchSize).join(" ");
+        accumulated += (accumulated ? " " : "") + chunk;
         const currentText = accumulated;
         setMessages((prev) =>
           prev.map((m) => (m.id === aiMsgId ? { ...m, text: currentText } : m))
         );
-        await new Promise((r) => setTimeout(r, 6));
+        await new Promise((r) => setTimeout(r, 4));
       }
 
       setLoading(false);
