@@ -396,19 +396,6 @@
   box-shadow: 0 0 0 2px rgba(112, 59, 247, 0.2) !important;
 }
 
-/* Deployed Banner */
-.light #deployed-portfolio-section .glass-panel {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.97), rgba(244, 240, 255, 0.95), rgba(255, 255, 255, 0.97)) !important;
-  border-color: rgba(112, 59, 247, 0.28) !important;
-  box-shadow: 0 10px 32px 0 rgba(112, 59, 247, 0.1) !important;
-}
-
-.light #deployed-portfolio-section .bg-black\/40 {
-  background-color: rgba(112, 59, 247, 0.08) !important;
-  border-color: rgba(112, 59, 247, 0.2) !important;
-  color: #6032d8 !important;
-}
-
 /* Footer */
 .light #main-footer {
   background-color: rgba(246, 243, 255, 0.96) !important;

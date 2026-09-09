@@ -113,9 +113,34 @@ export const AboutSection: React.FC = () => {
                   <p className="text-xs text-gray-400 uppercase tracking-wider font-semibold">
                     Direct Email
                   </p>
-                  <p className="text-[#d4bbff] font-medium text-sm md:text-base mt-0.5 truncate">
+                  <a
+                    href={`mailto:${PERSONAL_INFO.email}`}
+                    className="text-[#d4bbff] hover:text-white font-medium text-sm md:text-base mt-0.5 truncate block transition-colors"
+                  >
                     {PERSONAL_INFO.email}
+                  </a>
+                </div>
+              </li>
+
+              <li className="flex items-start gap-4">
+                <div className="w-11 h-11 rounded-2xl bg-[#0077b5]/15 flex items-center justify-center text-[#0077b5] shrink-0 border border-[#0077b5]/30 shadow-sm">
+                  <i className="fab fa-linkedin-in text-base text-sky-400"></i>
+                </div>
+                <div className="min-w-0">
+                  <p className="text-xs text-gray-400 uppercase tracking-wider font-semibold">
+                    LinkedIn Profile
                   </p>
+                  <a
+                    id="about-linkedin-link"
+                    href={PERSONAL_INFO.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#d4bbff] hover:text-white font-medium text-sm md:text-base mt-0.5 inline-flex items-center gap-1.5 transition-colors"
+                    title="Open Harini P LinkedIn Profile"
+                  >
+                    <span>harini-p-111641432</span>
+                    <i className="fas fa-external-link-alt text-xs text-gray-400"></i>
+                  </a>
                 </div>
               </li>
             </ul>

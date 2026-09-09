@@ -115,23 +115,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenResume }) => {
               <i className="fas fa-arrow-down text-xs group-hover:translate-y-0.5 transition-transform"></i>
             </button>
 
-            {/* Deployed Portfolio Live Button */}
-            <a
-              id="hero-deployed-link"
-              href="#deployed-portfolio-section"
-              onClick={(e) => {
-                e.preventDefault();
-                const el = document.getElementById("deployed-portfolio-section");
-                if (el) el.scrollIntoView({ behavior: "smooth" });
-              }}
-              className="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-5 py-3.5 rounded-full font-bold text-sm flex items-center gap-2 transition-all duration-300 transform hover:-translate-y-0.5 shadow-sm"
-              title="View Deployed Portfolio Details & Link"
-            >
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              <i className="fas fa-globe text-[#d4bbff]"></i>
-              <span>Live Deployed Link</span>
-            </a>
-
             {/* Social Links */}
             <div className="flex items-center gap-3 text-lg">
               <a

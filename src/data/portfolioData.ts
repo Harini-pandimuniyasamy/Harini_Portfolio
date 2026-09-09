@@ -19,7 +19,7 @@ export const PERSONAL_INFO = {
   dob: "October 7, 2004",
   languages: ["Tamil", "English"],
   github: "https://github.com/Harini-pandimuniyasamy",
-  linkedin: "https://www.linkedin.com/in/harini-p-53b589417",
+  linkedin: "https://www.linkedin.com/in/harini-p-111641432/",
   resumeUrl: "/assets/resume.pdf",
   profileImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuBUP8JqUHSeVP6nWg36FwIf377gfoeWL_NmFsf5VqtERcpNGbi0kd8AitfwJtH7f9g5J6LfASpZ5HIQVevKVT_-4mCi-N-IWwyDOxD14b8D-fVw34Eg4ESkuLvwHclGLV9FKV6K3CBMIFIDlT6VN82ED8XASv8NXEZ01Refkckd7B_d_GSC0Ze_i_r1CGlzzPhR_fUEa4OyflZaHCO798fzrixldhO-RMQ1OMi6a_2XXn0I5OilErAk0pDsUCigyd1S698PlLobAg5w",
   availabilityStatus: "Available for Opportunities",

@@ -201,7 +201,7 @@ Explore her repositories, including Citizen Connect, Direct Market Access for Fa
   // LinkedIn
   if (compact.includes("linkedin")) {
     return `💼 Harini's LinkedIn Profile:
-https://www.linkedin.com/in/harini-p-53b589417
+https://www.linkedin.com/in/harini-p-111641432/
 Connect with Harini for software engineering roles, internships, and collaborations!`;
   }
 
@@ -223,7 +223,7 @@ Connect with Harini for software engineering roles, internships, and collaborati
 • 📧 Email: harinip7104@gmail.com
 • 📱 Phone: +91 7418490158
 • 📍 Location: Trichy, Tamil Nadu, India
-• 💼 LinkedIn: https://www.linkedin.com/in/harini-p-53b589417
+• 💼 LinkedIn: https://www.linkedin.com/in/harini-p-111641432/
 • 🐙 GitHub: https://github.com/Harini-pandimuniyasamy
 • Availability: Actively available for software development opportunities, full-time positions, and internships.`;
   }

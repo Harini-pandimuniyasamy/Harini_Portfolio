@@ -57,7 +57,7 @@ export function generateResumePdf() {
     .font('Helvetica')
     .fontSize(8.5)
     .text('Trichy, Tamil Nadu, India  •  harinip7104@gmail.com  •  +91 7418490158', 44, 76)
-    .text('GitHub: github.com/Harini-pandimuniyasamy  •  LinkedIn: linkedin.com/in/harini-p-53b589417', 44, 87);
+    .text('GitHub: github.com/Harini-pandimuniyasamy  •  LinkedIn: linkedin.com/in/harini-p-111641432', 44, 87);
 
   let y = 112;
 

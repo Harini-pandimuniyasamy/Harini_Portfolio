@@ -31,7 +31,7 @@ PROFILE:
 - Location: Trichy, Tamil Nadu, India
 - Email: harinip7104@gmail.com | Phone: +91 7418490158
 - GitHub: https://github.com/Harini-pandimuniyasamy
-- LinkedIn: https://www.linkedin.com/in/harini-p-53b589417
+- LinkedIn: https://www.linkedin.com/in/harini-p-111641432/
 
 EDUCATION:
 - MCA (Master of Computer Applications): Holy Cross College (Autonomous), Trichy | 2025–2027 | CGPA: 9.33

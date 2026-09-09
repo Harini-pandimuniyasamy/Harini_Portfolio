@@ -59,7 +59,7 @@ export const HARINI_DATA: HariniProfile = {
   dob: "October 7, 2004",
   languages: ["Tamil", "English"],
   github: "https://github.com/Harini-pandimuniyasamy",
-  linkedin: "https://www.linkedin.com/in/harini-p-53b589417",
+  linkedin: "https://www.linkedin.com/in/harini-p-111641432/",
   education: [
     {
       degree: "Master of Computer Applications (MCA)",
@@ -445,7 +445,7 @@ You can inspect the full architectural breakdowns and features in the "Featured 
     return `Harini's GitHub profile: https://github.com/Harini-pandimuniyasamy`;
   }
   if (q.includes("linkedin")) {
-    return `Harini's LinkedIn profile: https://www.linkedin.com/in/harini-p-53b589417`;
+    return `Harini's LinkedIn profile: https://www.linkedin.com/in/harini-p-111641432/`;
   }
 
   // Default helpful response

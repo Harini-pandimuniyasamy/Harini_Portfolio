@@ -121,6 +121,19 @@ export const Navbar: React.FC<NavbarProps> = ({
             )}
           </button>
 
+          {/* LinkedIn Profile */}
+          <a
+            id="nav-linkedin-btn"
+            href={PERSONAL_INFO.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Harini P LinkedIn Profile"
+            className="w-9 h-9 rounded-full bg-white/5 border border-white/10 hover:border-[#0077b5] hover:bg-[#0077b5]/20 hover:text-white flex items-center justify-center text-gray-300 transition-all duration-300"
+            title="Connect on LinkedIn"
+          >
+            <i className="fab fa-linkedin-in text-xs"></i>
+          </a>
+
           {/* Resume Button */}
           <button
             id="nav-resume-btn"
@@ -199,6 +212,16 @@ export const Navbar: React.FC<NavbarProps> = ({
             ))}
 
             <div className="pt-4 border-t border-white/10 flex flex-col gap-3">
+              <a
+                href={PERSONAL_INFO.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full border border-[#0077b5]/40 text-white py-2.5 rounded-full font-semibold text-sm hover:bg-[#0077b5]/20 transition-colors flex items-center justify-center gap-2"
+              >
+                <i className="fab fa-linkedin-in text-sm text-[#0077b5]"></i> Connect on LinkedIn
+              </a>
+
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);

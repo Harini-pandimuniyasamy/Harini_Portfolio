@@ -49,9 +49,16 @@ export const Footer: React.FC<FooterProps> = ({ onOpenResume }) => {
           <a href="#projects" className="hover:text-white transition-colors">
             Projects
           </a>
-          <a href="#deployed-portfolio-section" className="text-[#d4bbff] hover:text-white font-medium transition-colors flex items-center gap-1">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-            Deployed Link
+          <a
+            id="footer-linkedin-link"
+            href={PERSONAL_INFO.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-white text-gray-400 transition-colors flex items-center gap-1.5"
+            title="Harini P LinkedIn Profile"
+          >
+            <i className="fab fa-linkedin-in text-sky-400"></i>
+            <span>LinkedIn</span>
           </a>
           <button
             onClick={onOpenResume}

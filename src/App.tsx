@@ -15,7 +15,6 @@ import { ExperienceSection } from "./components/ExperienceSection";
 import { AchievementsSection } from "./components/AchievementsSection";
 import { ProjectsSection } from "./components/ProjectsSection";
 import { PreferredInterestsSection } from "./components/PreferredInterestsSection";
-import { DeployedPortfolioBanner } from "./components/DeployedPortfolioBanner";
 import { ContactSection } from "./components/ContactSection";
 import { ResumeModal } from "./components/ResumeModal";
 import { ChatbotWidget } from "./components/ChatbotWidget";
@@ -131,7 +130,6 @@ export default function App() {
       <ExperienceSection />
       <AchievementsSection />
       <ProjectsSection />
-      <DeployedPortfolioBanner />
       <ContactSection />
 
       {/* Footer */}
